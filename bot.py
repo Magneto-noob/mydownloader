@@ -431,7 +431,7 @@ def download_video(message, video):
     st1, out1 = getstatusoutput(filename_cmd)
     if st1 != 0:
         logger.error(filename_cmd)
-        caption = f""
+        caption = f"{link}"
         return 1, "", caption, quote, filename
     yt_title, path = out1.split("\n")
     if title == "":
@@ -453,7 +453,7 @@ def download_video(message, video):
 async def download_videos(message, videos, index=1):
     for video in videos:
         r, path, caption, quote, filename = download_video(message, video)
-        caption += f"\n\nTotal Downloaded: <b>{index}</b>\n\nDownload By: <b>{NAME}</b>"
+        caption += f""
         if r in [1, 2]:
             try:
                 await message.reply(caption, quote=quote)
