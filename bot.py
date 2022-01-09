@@ -441,7 +441,7 @@ def download_video(message, video):
     st2, out2 = getstatusoutput(download_cmd)
     if st2 != 0:
         logger.error(download_cmd)
-        caption = f"Downloading Failed for this Video. I can't help you sorry BRUH!.\n\nTitle: {title}\n\nTopic: {topic}\n\nError: {out2}"
+        caption = f"{link}"
         return 2, "", caption, quote, filename
     else:
         filename += "." + path.split(".")[-1]
