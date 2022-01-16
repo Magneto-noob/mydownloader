@@ -415,7 +415,7 @@ def download_video(message, video):
         else:
             ytf = "360"
     else:
-        ytxt = "{vid_format}"
+        ytxt = f"{vid_format}"
     cmd = (
         f"yt-dlp --socket-timeout 30 -o './downloads/{chat}/%(id)s.%(ext)s' -f {ytxt} --no-warning '{link}'"
     )
