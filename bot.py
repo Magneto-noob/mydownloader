@@ -321,7 +321,7 @@ async def download_html(bot, msg):
     else:
         title = message.document.file_name
 
-    formats = ["144", "240", "360", "480", "720"]
+    formats = ["144", "240", "360", "480", "540", "720"]
     buttons = []
     for format in formats:
         buttons.append(InlineKeyboardButton(text=format + "p", callback_data=format))
@@ -414,9 +414,7 @@ def download_video(message, video):
             ytf= "720"
         else:
             ytf = "360"
-    else:
-        ytxt = "360"
-
+    
     cmd = (
         f"yt-dlp --socket-timeout 30 -o './downloads/{chat}/%(id)s.%(ext)s' -f {ytxt} --no-warning '{link}'"
     )
