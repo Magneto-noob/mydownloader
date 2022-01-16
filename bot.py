@@ -414,7 +414,8 @@ def download_video(message, video):
             ytf= "720"
         else:
             ytf = "360"
-    
+    else:
+        ytxt = "{vid_format}"
     cmd = (
         f"yt-dlp --socket-timeout 30 -o './downloads/{chat}/%(id)s.%(ext)s' -f {ytxt} --no-warning '{link}'"
     )
@@ -516,7 +517,7 @@ async def download_link(bot, message):
         if user is not None and user not in sudo_users and len(commands) > 3:
             await message.reply("Not authorized for this action.", quote=True)
             return
-        formats = ["144", "240", "360", "480", "720"]
+        formats = ["144", "240", "360", "480", "540", "720"]
         buttons = []
         for def_format in formats:
             buttons.append(
