@@ -386,7 +386,7 @@ def download_video(message, video):
     elif "support" in link :
         if vid_format not in ["144", "240", "360", "480", "720"]:
             vid_format = "360"
-        ytf = f"'bestvideo[height<={vid_format}]+bestaudio'"
+        ytxt = f"{vid_format}"
     elif ("support" in link and len(link.split("/")[-1]) == 8):
         if vid_format == "144":
             vid_format = "180"
@@ -400,25 +400,25 @@ def download_video(message, video):
             vid_format = "720"
         else:
             vid_format = "360"
-        ytf = f"'best[height<={vid_format}]'"
+        ytxt = f"{vid_format}"
     elif is_vimeo(link):
         if vid_format == "144":
-            ytf= "'http-240p'"
+            ytf= "240"
         elif vid_format == "240":
-            ytf= "'http-240p'"
+            ytf= "240"
         elif vid_format == "360":
-            ytf= "'http-360p'"
+            ytf= "360"
         elif vid_format == "480":
-            ytf= "'http-540p'"
+            ytf= "540"
         elif vid_format == "720":
-            ytf= "'http-720p'"
+            ytf= "720"
         else:
-            ytf = "'http-360p'"
+            ytf = "360"
     else:
-        ytf = "'best'"
+        ytxt = "360"
 
     cmd = (
-        f"yt-dlp --socket-timeout 30 -o './downloads/{chat}/%(id)s.%(ext)s' -f {ytf} --no-warning '{link}'"
+        f"yt-dlp --socket-timeout 30 -o './downloads/{chat}/%(id)s.%(ext)s' -f {ytxt} --no-warning '{link}'"
     )
     filename = (
         title.replace("/", "|")
