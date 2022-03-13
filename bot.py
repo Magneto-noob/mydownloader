@@ -430,7 +430,9 @@ def download_video(message, video):
     st1, out1 = getstatusoutput(filename_cmd)
     if st1 != 0:
         logger.error(filename_cmd)
-        caption = f"/leechwatch {link} | {title}"
+        index=1
+        caption = f"/leechwatch {link} | {index}{title}"
+        index += 1
         return 1, "", caption, quote, filename
     yt_title, path = out1.split("\n")
     if title == "":
@@ -440,13 +442,15 @@ def download_video(message, video):
     st2, out2 = getstatusoutput(download_cmd)
     if st2 != 0:
         logger.error(download_cmd)
-        caption = f"/leechwatch {link} | {title}"
+        index=1
+        caption = f"/leechwatch {link} | {index}{title}"
         return 2, "", caption, quote, filename
+        index += 1
     else:
         filename += "." + path.split(".")[-1]
         caption = f"{title} .mkv\n\n<b>Topic</b>: {topic}"
         return 0, path, caption, quote, filename
-
+        
 
 @exception(logger)
 async def download_videos(message, videos, index=1):
