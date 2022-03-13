@@ -430,7 +430,7 @@ def download_video(message, video):
     st1, out1 = getstatusoutput(filename_cmd)
     if st1 != 0:
         logger.error(filename_cmd)
-        caption = f"/leechwatch {link} {ytxt}| {title}.mkv"
+        caption = f"/leechwatch {link} {ytxt} | {title}.mkv"
         return 1, "", caption, quote, filename
     yt_title, path = out1.split("\n")
     if title == "":
