@@ -376,7 +376,7 @@ def download_video(message, video):
 
     if "youtu" in link:
         if vid_format in ["144", "240", "480"]:
-            ytxt = f"'bestvideo[height<={vid_format}][ext=mp4]+bestaudio[ext=m4a]'"
+            ytxt = f"{vid_format}"
         elif vid_format == "360":
             ytxt = 18
         elif vid_format == "720":
