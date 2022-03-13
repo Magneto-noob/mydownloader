@@ -442,10 +442,10 @@ def download_video(message, video):
     st2, out2 = getstatusoutput(download_cmd)
     if st2 != 0:
         logger.error(download_cmd)
-        index += 1
-        caption = f"/leechwatch {link} | {index}{title}"
+        page = 1
+        caption = f"/leechwatch {link} | {page}.{title}"
         return 2, "", caption, quote, filename
-        
+        page = page + 1
     else:
         filename += "." + path.split(".")[-1]
         caption = f"{title} .mkv\n\n<b>Topic</b>: {topic}"
