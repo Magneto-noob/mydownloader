@@ -432,11 +432,11 @@ def download_video(message, video):
         logger.error(filename_cmd)
         index=1
         caption = f"/leechwatch {link} | {index}.{title}"
-        index += 1
         return 1, "", caption, quote, filename
     yt_title, path = out1.split("\n")
     if title == "":
         title = yt_title
+    index += 1
 
     download_cmd = f"{cmd} -R 25 --fragment-retries 25 --external-downloader aria2c --downloader-args 'aria2c: -x 16 -j 32'"
     st2, out2 = getstatusoutput(download_cmd)
